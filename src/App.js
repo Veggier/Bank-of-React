@@ -71,7 +71,7 @@ class App extends Component {
 
   //add debit card
   newDebit = (debit) => {
-    debit.id = (Math.random()+Math.random()).toString(30);
+    debit.id = Math.floor(Math.random() * 100);
     const date = new Date();
     debit.date = date.toISOString();
     const newDebits = [debit, ...this.state.debits];
@@ -83,7 +83,7 @@ class App extends Component {
 
   //add credit card
   newCredit = (credit) => {
-    credit.id = (Math.random()+Math.random()).toString(30);
+    credit.id = Math.floor(Math.random() * 100);
     const date = new Date();
     credit.date = date.toISOString();
     const newCredits = [credit, ...this.state.credits];

@@ -53,7 +53,7 @@ class App extends Component {
         for (let item of data) {
           totalCredit1 += item.amount;
         }
-        let newbalance=this.state.accountBalance+totalCredit1;
+        let newbalance=parseFloat(this.state.accountBalance)+parseFloat(totalCredit1);
         this.setState({ 
           totalCredit:totalCredit1,
           accountBalance:newbalance.toFixed(2),

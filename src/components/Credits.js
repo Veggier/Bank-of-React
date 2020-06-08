@@ -38,44 +38,46 @@ class Credits extends Component {
     return (
       <div>
         {/* Header */}
-        <div className="d-flex form-inline justify-content-between mt-4 mb-4">
-          <h1 className="">Credits</h1>
-          <Link className="btn btn-dark" to="/">
-            Back to Home
-          </Link>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link className="navbar-brand" to="/">  Home</Link>
+
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+        <Link className="av-item nav-link" to="/userProfile">User Profile</Link>
+        <Link className="av-item nav-link" to="/login">Login</Link>
+        <Link className="av-item nav-link" to="/credits">Credits </Link>
+        <Link className="av-item nav-link" to="/debits">Debits </Link>
         </div>
+        </div>
+        </nav>
+        <h1>Credits</h1>
 
         <AccountBalance accountBalance={this.props.accountBalance} />
-        <div className="mb-4">
-          <strong>Total Credit</strong>:{" "}
-          <span className="badge badge-pill badge-success">
-            ${this.props.totalCredit}
-          </span>
-        </div>
+        <div>Total for Credit: ${this.props.totalCredit}</div>
 
-        {/* Add Credit Listing */}
+        {/* Add new Credit card*/}
         <div className="mt-4 mb-4">
-          <h3 className="mb-3">Add Credit Listing</h3>
-          <form onSubmit={this.handleSubmit} className="form-inline">
-            <input
-              className="form-control mr-3 mb-2"
-              name="description"
-              value={this.state.credit.description}
-              onChange={this.handleChange}
-              placeholder="Enter description"
-            />
-            <input
-              className="form-control mr-3 mb-2"
-              name="amount"
-              value={this.state.credit.amount}
-              onChange={this.handleChange}
-              placeholder="Enter amount"
-            />
-            <button className="btn btn-primary mb-2">Add</button>
+            <h3 className="mb-3">Add a New Credit</h3>
+            <form  className="card  border-light mb-3 width mx-auto" onSubmit={this.handleSubmit} >
+            <div className="input-group mx-auto">
+                <span className="input-group-text">Description:</span>
+                    <input type="text" name="description"  placeholder="Enter description"
+                    onChange={this.handleChange}
+                    value={this.state.credit.description}
+                    />
+                <span className="input-group-text">Amount:</span>
+                    <input type="text" name="amount"  placeholder="Enter amount"
+                    onChange={this.handleChange}
+                    value={this.state.credit.amount}
+                    />
+                    <div className="input-group-append">
+                     <button className="btn btn-primary " type="submit">Add</button>
+                     </div>
+                </div>
           </form>
         </div>
 
-        {/* View Credits */}
+        {/* Credits information */}
         <div className="mt-4 mb-3">
           <h3>History</h3>
         </div>

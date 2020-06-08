@@ -14,8 +14,8 @@ class App extends Component {
 
     this.state = {
       accountBalance: 0,
-      debitTotal: 0,
-      creditTotal: 0,
+      totalDebit: 0,
+      totalCredit: 0,
       debits: [],
       credits: [],
       currentUser: {
@@ -31,14 +31,14 @@ class App extends Component {
         this.setState({
           debits: data,
         });
-        let totalDebit = 0;
+        let totalDebit1 = 0;
 
         for (let item of data) {
-          totalDebit += item.amount;
+          totalDebit1 += item.amount;
         }
-        let newbalance=this.state.accountBalance-totalDebit;
+        let newbalance=this.state.accountBalance-totalDebit1;
         this.setState({
-         totalDebit,
+         totalDebit:totalDebit1,
           accountBalance:newbalance.toFixed(2),
         });
       }) .catch((error) => {
@@ -49,13 +49,13 @@ class App extends Component {
     axios.get("https://moj-api.herokuapp.com/credits").then((response) => {
         let data = response.data;
         this.setState({credits: data,});
-        let totalCredit = 0;
+        let totalCredit1 = 0;
         for (let item of data) {
-          totalCredit += item.amount;
+          totalCredit1 += item.amount;
         }
-        let newbalance=this.state.accountBalance+totalCredit;
+        let newbalance=this.state.accountBalance+totalCredit1;
         this.setState({ 
-          totalCredit,
+          totalCredit:totalCredit1,
           accountBalance:newbalance.toFixed(2),
         });
       }).catch((error) => {
@@ -87,9 +87,10 @@ class App extends Component {
     const date = new Date();
     credit.date = date.toISOString();
     const newCredits = [credit, ...this.state.credits];
+    let newbalance=parseFloat(this.state.accountBalance)+ parseFloat(credit.amount);
     this.setState({ 
       credits: newCredits,
-      accountBalance: this.state.accountBalance - credit.amount
+      accountBalance: newbalance,
      });
   };
 

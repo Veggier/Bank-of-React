@@ -35,17 +35,30 @@ class LogIn extends Component {
 
     return (
       <div>
-        <Link to="/">Back to Home</Link>
-        <form onSubmit={this.handleSubmit}>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <Link className="navbar-brand" to="/">  Home</Link>
+
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div className="navbar-nav">
+        <Link className="av-item nav-link" to="/userProfile">User Profile</Link>
+        <Link className="av-item nav-link" to="/login">Login</Link>
+        <Link className="av-item nav-link" to="/credits">Credits </Link>
+        <Link className="av-item nav-link" to="/debits">Debits </Link>
+        </div>
+        </div>
+        </nav>
+        <form className="form-signin" onSubmit={this.handleSubmit}>
+        <h1 className="h3 mb-3 font-weight-normal">Please Log in</h1>
           <div>
-            <label htmlFor="userName">User Name</label>
-            <input type="text" name="userName" onChange={this.handleChange} value={this.state.user.userName} />
+            <label htmlFor="userName">UserName:</label>
+            <input className="form-control" type="text" name="userName" onChange={this.handleChange} value={this.state.user.userName} />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <input type="password" name="password" />
+            <label htmlFor="password">Password:</label>
+            <input className="form-control" type="password" name="password" />
           </div>
-          <button>Log In</button>
+          <br/>
+          <button className="btn btn-lg btn-primary btn-block">Log In</button>
         </form>
       </div>
     )

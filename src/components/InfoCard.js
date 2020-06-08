@@ -2,12 +2,12 @@ import React from "react";
 
 const InfoCard = ({ description, amount, date }) => {
   return (
-    <div className="card">
+    <div className="card bg-light mb-3 width mx-auto">
       <div className="card-header">{description}</div>
-      <ul className="list-group list-group-flush">
-        <li className="list-group-item">${amount.toFixed(2)}</li>
-        <li className="list-group-item">{date}</li>
-      </ul>
+      <div className="card-body">
+    <h5 className="card-title">Amount: ${amount.toFixed(2)}</h5>
+    <p className="card-text">Date: {date}</p>
+      </div>
     </div>
   );
 };
